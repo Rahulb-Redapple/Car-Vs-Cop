@@ -7,16 +7,18 @@ namespace RacerVsCops
         [SerializeField] private ApplicationHandler _applicationHandler;
         [SerializeField] private PopupHandler _popupHandler;
         [SerializeField] private EssentialHelperData _essentialHelperData;
-        [SerializeField] private EssentialConfigData _essentialConfigData;
+
         //[SerializeField] private InputHandler _inputHandler;
         //[SerializeField] private AudioHandler _audioHandler;
 
+        private EssentialConfigData _essentialConfigData;
         private PlayerSaveData _playerSaveData;
 
         private void Awake()
         {
             _playerSaveData = PlayerDataHandler.LoadPlayerData();
             Application.targetFrameRate = 60;
+            _essentialConfigData = Resources.Load<EssentialConfigData>(nameof(EssentialConfigData));
             _essentialConfigData.Init();
             _essentialHelperData.Init();
             //_inputHandler.Init();

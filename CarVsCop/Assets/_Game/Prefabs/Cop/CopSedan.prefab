@@ -1126,7 +1126,7 @@ MonoBehaviour:
   - {fileID: 1507046060425424548}
   - {fileID: 2036285639565764133}
   _audioSource: {fileID: 5319698019556491311}
-  _flashInterval: 0.5
+  _flashInterval: 0.25
 --- !u!1 &4997331424074201218
 GameObject:
   m_ObjectHideFlags: 0
@@ -1622,11 +1622,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: siren
-      objectReference: {fileID: 0}
-    - target: {fileID: 8382024565018312041, guid: 90424096531cd4244a44724e6dd551cb,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8382024565018312041, guid: 90424096531cd4244a44724e6dd551cb,
         type: 3}

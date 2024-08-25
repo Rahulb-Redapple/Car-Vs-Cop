@@ -4,7 +4,10 @@ using UnityEngine;
 
 namespace RacerVsCops
 {
-    public abstract class EssentialHelper : MonoBehaviour { }
+    public abstract class EssentialHelper : MonoBehaviour 
+    {
+        internal virtual void Init() { }
+    }
     public class EssentialHelperData : MonoBehaviour
     {
         [SerializeField] private List<EssentialHelper> _essentialDataList = new List<EssentialHelper>();
@@ -16,6 +19,7 @@ namespace RacerVsCops
             for (int i = 0; i < _essentialDataList.Count; i++)
             {
                 _essentialDataCollection.Add(_essentialDataList[i].GetType(), _essentialDataList[i]);
+                _essentialDataList[i].Init();   
             }
         }
 

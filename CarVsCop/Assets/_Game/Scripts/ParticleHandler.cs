@@ -9,17 +9,19 @@ namespace RacerVsCops
         [SerializeField] private ParticleSystem explosionPS;
 
         private EssentialHelperData _essentialHelperData;
+        private ObjectPooling _objectPooling;
 
         internal void Init(EssentialHelperData essentialHelperData)
         {
             _essentialHelperData = essentialHelperData;
+            _objectPooling = _essentialHelperData.AccessData<ObjectPooling>();
             gameObject.SetActive(true);
-            Invoke(nameof(DeActivate), (explosionPS.main.duration + explosionPS.startLifetime));
+            Invoke(nameof(Cleanup), (explosionPS.main.duration + explosionPS.startLifetime));
         }
 
-        private void DeActivate()
+        private void Cleanup()
         {
-            _essentialHelperData.AccessData<ObjectPooling>().ReturnObjectToPool(gameObject, PoolObjectType.EXPLOSION);
+            _objectPooling.ReturnObjectToPool(gameObject, PoolObjectType.EXPLOSION);
         }
     }
 }

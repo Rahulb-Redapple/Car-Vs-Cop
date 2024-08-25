@@ -11888,14 +11888,18 @@ MonoBehaviour:
   scoreText: {fileID: 7498797728993238971}
   coinText: {fileID: 2796294977391387457}
   copKilledText: {fileID: 7242008987094489885}
-  healthList: []
+  healthList:
+  - {fileID: 1680504867295169147}
+  - {fileID: 877270101926935034}
+  - {fileID: 781793321595724518}
+  - {fileID: 6777102606273995917}
   _fullHeart: {fileID: 21300000, guid: 4b4b1daaeedee4ba3b0b9724fb939664, type: 3}
   _emptyHeart: {fileID: 21300000, guid: 482d37ff6164147d68ef36d75ed43044, type: 3}
   wantedLevelItems:
-  - {fileID: 8193527245314852729}
-  - {fileID: 3018688740669874932}
-  - {fileID: 2772146978251936180}
   - {fileID: 3765187128575952114}
+  - {fileID: 2772146978251936180}
+  - {fileID: 3018688740669874932}
+  - {fileID: 8193527245314852729}
 --- !u!114 &7498797728993238971
 MonoBehaviour:
   m_ObjectHideFlags: 0

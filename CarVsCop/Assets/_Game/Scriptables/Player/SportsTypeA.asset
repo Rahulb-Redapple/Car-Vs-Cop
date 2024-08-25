@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SportsTypeA
   m_EditorClassIdentifier: 
   _vehicleSetting:
-    _moveSpeed: 35
+    _moveSpeed: 37
     _turnSpeed: 280
     _wheelRotSpeed: 170
     _totalHealth: 4

@@ -11,7 +11,6 @@ namespace RacerVsCops
         [SerializeField] private float _flashInterval = 0.5f;
 
         private bool _switchLight;
-        private bool _hasSiren = false;
 
         private Coroutine _copLightCoroutine;
 
@@ -19,9 +18,7 @@ namespace RacerVsCops
         {
             _copLightCoroutine = StartCoroutine(FlashyLightEffect());
 
-            if (!_hasSiren)
-                return;
-            _audioSource.Play();
+            HandleAudio(true);
         }
 
         private IEnumerator FlashyLightEffect()
@@ -37,9 +34,28 @@ namespace RacerVsCops
             }
         }
 
+        private void HandleAudio(bool _canPlaySiren)
+        {
+            if(!Equals(_audioSource, null))
+            {
+                if(_canPlaySiren)
+                {
+                    _audioSource.Play();
+                }
+                else
+                {
+                    _audioSource.Stop();
+                }
+            }
+            else
+            {
+                return;
+            }
+        }
+
         internal void Cleanup()
         {
-            _audioSource.Stop();
+            HandleAudio(false);
 
             if (!Equals(_copLightCoroutine, null))
             {

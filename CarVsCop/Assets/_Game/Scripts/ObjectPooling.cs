@@ -24,7 +24,7 @@ namespace SimpleObjectPoolingSystem
     {
         [SerializeField] List<PoolInfo> listOfPool;
 
-        private void Awake()
+        internal override void Init()
         {
             for (int i = 0; i < listOfPool.Count; i++)
             {
@@ -32,9 +32,8 @@ namespace SimpleObjectPoolingSystem
             }
         }
 
-
         #region Instantiating Objects And Adding Them To Pool
-        void FillPool(PoolInfo info)
+        private void FillPool(PoolInfo info)
         {
             for (int i = 0; i < info.amount; i++)
             {

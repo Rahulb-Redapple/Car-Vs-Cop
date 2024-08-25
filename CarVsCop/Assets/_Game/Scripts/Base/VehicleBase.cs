@@ -38,6 +38,7 @@ namespace RacerVsCops
             _gameplayHelper = gameplayHelper;
             _essentialHelperData = essentialHelperData;
             InitializeVehicleData();
+
         }
 
         internal virtual void Update()

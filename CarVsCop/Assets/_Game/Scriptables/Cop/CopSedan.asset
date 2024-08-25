@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CopSedan
   m_EditorClassIdentifier: 
   _vehicleSetting:
-    _moveSpeed: 40
+    _moveSpeed: 43
     _turnSpeed: 3
     _wheelRotSpeed: 100
     _totalHealth: 2
