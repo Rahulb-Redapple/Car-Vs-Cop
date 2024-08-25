@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f94b487b236efbe4291fdef1ec5f58e6, type: 3}
+  m_Name: CopSedan
+  m_EditorClassIdentifier: 
+  _vehicleSetting:
+    _moveSpeed: 40
+    _turnSpeed: 3
+    _wheelRotSpeed: 100
+    _totalHealth: 2
+  _vehicleDatum:
+    _id: 0
+    _vehiclePrefab: {fileID: 8255576702260346024, guid: 6822987d2fad7ba49a975ebcfe73401a,
+      type: 3}
+    _vehiclePrice: 0
+    _vehicleName: 
+    _vehicleIcon: {fileID: 0}
