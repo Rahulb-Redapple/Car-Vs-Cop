@@ -11,6 +11,7 @@ namespace RacerVsCops
         [SerializeField] int _groundSize;
         private Transform _target;
         private EssentialHelperData _essentialHelperData;
+        private ObjectPooling _objectPooling;
 
         private int _leftId = 0;
         private int _topId = 0;
@@ -25,6 +26,7 @@ namespace RacerVsCops
         internal void Init(EssentialHelperData essentialHelperData)
         {
             _essentialHelperData = essentialHelperData;
+            _objectPooling = _essentialHelperData.AccessData<ObjectPooling>();  
         }
 
         internal void ReadyToGenerateGrid(bool isReady)
@@ -118,8 +120,8 @@ namespace RacerVsCops
                 for (int z = 0; z < _height; z++)
                 {
                     Vector3 pos = new Vector3(x * _groundSize, 0, z * _groundSize);
-                    _groundList[x, z] = _essentialHelperData.AccessData<ObjectPooling>().GetObjectFromPool(PoolObjectType.GROUND);
-                    Ground ground = _groundList[x, z].GetComponent<Ground>();
+                    Ground ground = _objectPooling.GetObjectFromPool(PoolObjectType.GROUND).GetComponent<Ground>();
+                    _groundList[x, z] = ground.gameObject;
                     ground.Init(_essentialHelperData, pos, Quaternion.identity, this.transform);
                     //_groundList[x, z].name = $"Ground [{x}, {z}]";
                     _instantiatedGroundsList.Add(ground);

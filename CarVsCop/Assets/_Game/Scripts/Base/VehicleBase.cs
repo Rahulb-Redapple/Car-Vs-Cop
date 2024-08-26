@@ -8,13 +8,12 @@ namespace RacerVsCops
     [RequireComponent(typeof(Rigidbody))]
     [RequireComponent(typeof(BoxCollider))]
     [RequireComponent(typeof(VehicleIdentifier))]
-    public abstract class VehicleBase : MonoBehaviour
+    public abstract class VehicleBase : ObjectPoolBase
     {
         [SerializeField] private VehicleConfig _vehicleConfig;
         [SerializeField] private ParticleTrail _particleTrail;
         [SerializeField] private List<Transform> wheels = new List<Transform>();
         [SerializeField] private int onHitHealthDecrease = 1;
-        [SerializeField] private PoolObjectType poolObjectType;
 
         private int currentHealth;
         private bool isVehicleReady = false;
@@ -31,14 +30,12 @@ namespace RacerVsCops
         internal bool IsVehicleReady { get { return isVehicleReady; } set { isVehicleReady = value; } }
         internal int OnHitHealthDecrease => onHitHealthDecrease;
         internal int VehicleID => VehicleConfig.vehicleDatum.ID;
-        internal PoolObjectType ObjectPoolType => poolObjectType;
 
         internal virtual void Init(GameplayHelper gameplayHelper, EssentialHelperData essentialHelperData)
         {
             _gameplayHelper = gameplayHelper;
             _essentialHelperData = essentialHelperData;
             InitializeVehicleData();
-
         }
 
         internal virtual void Update()
@@ -73,10 +70,9 @@ namespace RacerVsCops
         }
         internal void ExplodeVehicle()
         {
-            GameObject explosion = EssentialHelperData.AccessData<ObjectPooling>().GetObjectFromPool(PoolObjectType.EXPLOSION);
+            ParticleHandler explosion = _objectPooling.GetObjectFromPool(PoolObjectType.EXPLOSION).GetComponent<ParticleHandler>();
             explosion.transform.position = transform.position;
-            ParticleHandler particleHandler = explosion.GetComponent<ParticleHandler>();
-            particleHandler.Init(EssentialHelperData);
+            explosion.Init();
         }
 
         internal abstract void OnCollisionEnter(Collision collision);

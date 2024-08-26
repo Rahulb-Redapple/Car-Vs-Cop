@@ -5,8 +5,10 @@ namespace RacerVsCops
 {
     public class CameraHelper : MonoBehaviour
     {
-        [SerializeField] private float smoothTime = 0.45f;
-        [SerializeField] private Transform followCam;
+        [SerializeField] private float _smoothTime = 0.45f;
+        [SerializeField] private Camera _followCam;
+
+        private Transform _followCamTransform => _followCam.transform;
 
         private Transform _target;
         private EssentialConfigData _essentialConfigData;
@@ -35,6 +37,11 @@ namespace RacerVsCops
             _elasticity = _cameraShakeSettings.Elasticity;
         }
 
+        internal Camera GetCam()
+        {
+            return _followCam;
+        }
+
         internal void ReadyToFollow(bool isReady)
         {
             isReadyToFollow = isReady;
@@ -43,7 +50,7 @@ namespace RacerVsCops
         internal void SetTarget(Transform target)
         {
             _target = target;
-            offset = followCam.position - _target.position;
+            offset = _followCamTransform.position - _target.position;
         }
 
         private void LateUpdate()
@@ -60,18 +67,18 @@ namespace RacerVsCops
                 return;
 
             Vector3 targetPos = _target.position + offset;
-            followCam.position = Vector3.SmoothDamp(followCam.position, targetPos, ref currentVelocity, smoothTime);
+            _followCamTransform.position = Vector3.SmoothDamp(_followCamTransform.position, targetPos, ref currentVelocity, _smoothTime);
             //followCam.position = Vector3.Lerp(followCam.position, targetPos, 0.35f);
         }
 
         internal void ShakeCamera()
         {
-            followCam.DOPunchRotation(_shakeRot, _duration, _vibration, _elasticity);
+            _followCamTransform.DOPunchRotation(_shakeRot, _duration, _vibration, _elasticity);
         }
 
         internal void Cleanup()
         {
-            followCam.transform.position = initialPosition;
+            _followCamTransform.position = initialPosition;
         }
     }
 }

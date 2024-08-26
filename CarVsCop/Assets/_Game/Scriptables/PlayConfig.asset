@@ -19,3 +19,5 @@ MonoBehaviour:
     _duration: 0.35
     _vibration: 10
     _elasticity: 2
+  _gameplayConfig:
+    _totalWantedLevel: 4

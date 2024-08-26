@@ -38968,7 +38968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d28c6d50ea74d9d4e97ce1c6226ec105, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectType: 3
+  _poolObjectType: 4
   explosionPS: {fileID: 198000011976894484}
 --- !u!82 &6882579053361658886
 AudioSource:
@@ -63058,7 +63058,7 @@ Light:
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_BoundingSphereOverride: {x: 1.02e-43, y: 3.1e-44, z: 8.156e-42, w: -2.5802187e-38}
   m_UseBoundingSphereOverride: 0
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0

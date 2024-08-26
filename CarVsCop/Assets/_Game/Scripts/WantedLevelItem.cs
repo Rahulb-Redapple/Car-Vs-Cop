@@ -1,3 +1,4 @@
+using SimpleObjectPoolingSystem;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,14 +6,14 @@ using UnityEngine.UI;
 
 namespace RacerVsCops
 {
-    public class WantedLevelItem : MonoBehaviour
+    public class WantedLevelItem : ObjectPoolBase
     {
         [SerializeField] private Image _starImage;
         [SerializeField] private Sprite _fullStarImage;
         [SerializeField] private Sprite _emptyStarImage;
 
-        [SerializeField] private float blinkDuration;
-        [SerializeField] private float _decreaseRate;
+        [SerializeField] private float _blinkDuration = 0.5f;
+        [SerializeField] private float _decreaseRate = 0.2f;
 
         private bool _canStartBlink = false;
 
@@ -20,10 +21,16 @@ namespace RacerVsCops
 
         private float _currBlinkDuration;
  
-        internal void Init()
+        internal void Init(Transform parent)
+        {
+            SetVisibility(true);
+            gameObject.transform.SetParent(parent);
+        }
+
+        internal void InitiateBlink()
         {
             _canStartBlink = true;
-            _currBlinkDuration = blinkDuration;
+            _currBlinkDuration = _blinkDuration;
             _blinkingCoroutine = StartCoroutine(ActivateStar());
         }
 
@@ -58,7 +65,9 @@ namespace RacerVsCops
             {
                 StopCoroutine(_blinkingCoroutine);
             }
-            UpdateStarSprite(_emptyStarImage);;
+            UpdateStarSprite(_emptyStarImage);
+
+            _objectPooling.ReturnObjectToPool(this, poolObjectType);    
         }
     }
 }

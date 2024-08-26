@@ -22,7 +22,7 @@ namespace RacerVsCops
             _essentialConfigData.Init();
             _essentialHelperData.Init();
             //_inputHandler.Init();
-            _popupHandler.Init();
+            _popupHandler.Init(_essentialConfigData, _essentialHelperData);
             //_audioHandler.Init();
             _applicationHandler.Init(_popupHandler, _essentialHelperData, _essentialConfigData);
         }

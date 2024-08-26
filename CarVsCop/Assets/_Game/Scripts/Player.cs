@@ -1,74 +1,28 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace RacerVsCops
 {
+    [DisallowMultipleComponent]
+    [RequireComponent(typeof(PlayerInput))]
+
     internal class Player : VehicleBase, IHealth
     {
         [SerializeField] private VehicleInvincibility _vehicleInvincibility;
         [SerializeField] private VehicleAudioHelper _vehicleAudioHelper;
-
-        int _screenWidth;
+        [SerializeField] private PlayerInput _playerInput;
 
         private CameraHelper _cameraHelper;
 
         internal void ReadyToPlay(CameraHelper cameraHelper)
         {
             _cameraHelper = cameraHelper;
+            _playerInput.Init(cameraHelper, VehicleConfig);
             IsVehicleReady = true;
             GameHelper.Instance.InvokeAction(GameConstants.UpdatePlayerHealth, CurrentHealth);
-
-            _screenWidth = Camera.main.pixelWidth;
 
             ParticleTrail.Init();
 
             _vehicleAudioHelper.PlayAudio(VehicleAudioType.ENGINE_RUNNING);
-        }
-
-        internal override void Update()
-        {
-            base.Update();
-
-            if (Input.GetKey(KeyCode.LeftArrow))
-            {
-                TurnLeft();
-            }
-            else if (Input.GetKey(KeyCode.RightArrow))
-            {
-                TurnRight();
-            }
-#if UNITY_ANDROID
-            MobileInput();
-#endif
-
-        }
-
-        private void MobileInput()
-        {
-            if (Input.touchCount > 0 && Input.touchCount < 2)
-            {
-                Touch touch = Input.touches[0];
-
-                if (touch.phase == TouchPhase.Stationary && !EventSystem.current.IsPointerOverGameObject(touch.fingerId))
-                {
-                    if (touch.position.x > (_screenWidth / 2))
-                        TurnRight();
-                    else
-                        TurnLeft();
-                }
-            }
-        }
-
-        public void TurnLeft()
-        {
-            transform.Rotate(Vector3.down * VehicleConfig.vehicleSetting.TurnSpeed * Time.deltaTime);
-
-        }
-
-        public void TurnRight()
-        {
-            transform.Rotate(Vector3.up * VehicleConfig.vehicleSetting.TurnSpeed * Time.deltaTime);
-
         }
 
         internal override void OnCollisionEnter(Collision collision)

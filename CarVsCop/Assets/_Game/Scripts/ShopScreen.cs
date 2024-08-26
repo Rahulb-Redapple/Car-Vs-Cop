@@ -63,13 +63,13 @@ namespace RacerVsCops
 
             type = (PoolObjectType)obj;
 
-            switch (type)
-            {
-                case PoolObjectType.ITEM:
+            //switch (type)
+            //{
+            //    case PoolObjectType.ITEM:
 
-                    HandleItemsData(_playerVehicleData.VehicleConfigs.ToList());
-                    break;
-            }
+            //        HandleItemsData(_playerVehicleData.VehicleConfigs.ToList());
+            //        break;
+            //}
 
             HandleToggles((int)obj);
         }
@@ -78,11 +78,11 @@ namespace RacerVsCops
         {
             for (int i = 0; i < itemConfigs.Count; i++)
             {
-                GameObject ob = _objectPooling.GetObjectFromPool(PoolObjectType.ITEM);
-                Item item = ob.GetComponent<Item>();
-                item.Init(itemConfigs[i]);
-                item.InitButton(_contentParent, _contentToggleGroup, type, _popupHandler, () => { AnimateItemDisplay(); });
-                pooledItems.Add(item);
+                //GameObject ob = _objectPooling.GetObjectFromPool(PoolObjectType.ITEM);
+                //Item item = ob.GetComponent<Item>();
+                //item.Init(itemConfigs[i]);
+                //item.InitButton(_contentParent, _contentToggleGroup, type, _popupHandler, () => { AnimateItemDisplay(); });
+                //pooledItems.Add(item);
             }
             //SetItemStatus();
         }
@@ -112,7 +112,7 @@ namespace RacerVsCops
                 {
                     ItemBase item = pooledItems[i].GetComponent<ItemBase>();
                     item.Cleanup();
-                    _objectPooling.ReturnObjectToPool(pooledItems[i].gameObject, item.objectType);
+                   // _objectPooling.ReturnObjectToPool(pooledItems[i].gameObject, item.objectType);
                 }
 
                 pooledItems.Clear();

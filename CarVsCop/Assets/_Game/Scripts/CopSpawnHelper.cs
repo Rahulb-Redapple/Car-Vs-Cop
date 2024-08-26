@@ -109,6 +109,5 @@ namespace RacerVsCops
             GameHelper.Instance.StopListening(GameConstants.UpdateSpawnedCopList, UpdateSpawnedCopList);
             GameHelper.Instance.StopListening(GameConstants.UpdateCopType, UpdateWantedLevel);
         }
-
     }
 }

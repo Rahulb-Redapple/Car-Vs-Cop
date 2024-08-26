@@ -16,7 +16,7 @@ namespace RacerVsCops
             transform.rotation = rotation;
             IsVehicleReady = true;
             target = player;
-            gameObject.SetActive(true);
+            SetVisibility(true);
             _copsLight.Init();
         }
 
@@ -68,7 +68,7 @@ namespace RacerVsCops
         internal override void Cleanup()
         {
             _copsLight.Cleanup();
-            EssentialHelperData.AccessData<ObjectPooling>().ReturnObjectToPool(gameObject, ObjectPoolType);
+            _objectPooling.ReturnObjectToPool(this, poolObjectType);
         }
     }
 }

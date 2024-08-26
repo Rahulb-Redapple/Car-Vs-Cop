@@ -4,6 +4,24 @@ using UnityEngine;
 
 namespace SimpleObjectPoolingSystem
 {
+    public abstract class ObjectPoolBase : MonoBehaviour
+    {
+        [SerializeField] private PoolObjectType _poolObjectType;
+
+        protected ObjectPooling _objectPooling;
+        protected PoolObjectType poolObjectType => _poolObjectType;
+
+        internal virtual void Init(ObjectPooling objectPooling)
+        {
+            _objectPooling = objectPooling;
+        }
+
+        internal void SetVisibility(bool isActive)
+        {
+            gameObject.SetActive(isActive); 
+        }
+    }
+
     [System.Serializable]
     public class PoolInfo
     {
@@ -41,13 +59,22 @@ namespace SimpleObjectPoolingSystem
                 obInstance = Instantiate(info.ObjectToPool, info.container.transform);
                 obInstance.gameObject.SetActive(false);
                 obInstance.transform.position = Vector3.zero;
-                info.pool.Add(obInstance);
+                
+                if(obInstance.TryGetComponent(out ObjectPoolBase objectPoolBase))
+                {
+                    objectPoolBase.Init(this);
+                    info.pool.Add(obInstance);
+                }
+                else
+                {
+                    Debug.Log($"{info.ObjectToPool.name} is not inherited from ObjectPoolBase class");
+                }
             }
         }
         #endregion
 
 
-        #region Fetch Objects From Pool Code
+            #region Fetch Objects From Pool Code
         public GameObject GetObjectFromPool(PoolObjectType type)
         {
             PoolInfo selected = GetPoolByType(type);
@@ -78,17 +105,17 @@ namespace SimpleObjectPoolingSystem
 
 
         #region Return Objects To Pool Code
-        public void ReturnObjectToPool(GameObject ob, PoolObjectType type)
+        public void ReturnObjectToPool(ObjectPoolBase ob, PoolObjectType type)
         {
-            ob.SetActive(false);
+            ob.SetVisibility(false);
             ob.transform.position = Vector3.zero;
 
             PoolInfo selected = GetPoolByType(type);
             List<GameObject> pool = selected.pool;
             ob.transform.SetParent(selected.container.transform);
 
-            if (!pool.Contains(ob))
-                pool.Add(ob);
+            if (!pool.Contains(ob.gameObject))
+                pool.Add(ob.gameObject);
         }
         #endregion
     }

@@ -1,56 +1,84 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class PlayerInput : MonoBehaviour
+namespace RacerVsCops
 {
-    private PlayerMovement _playerMovement;
+    [DisallowMultipleComponent]
+    [RequireComponent(typeof(InputHandler))]
 
-    int _screenWidth;
-
-    private void Awake()
+    public class PlayerInput : MonoBehaviour
     {
-        _playerMovement = GetComponent<PlayerMovement>();
-    }
+        [SerializeField] private InputHandler _inputHandler;
 
-    private void Start()
-    {
-        _screenWidth = Camera.main.pixelWidth;
-    }
+        private int _screenWidth;
 
-    private void Update()
-    {
+        private CameraHelper _cameraHelper;
+        private VehicleConfig _vehicleConfig;
+
+        internal void Init(CameraHelper cameraHelper, VehicleConfig vehicleConfig)
+        {
+            _cameraHelper = cameraHelper;
+            _vehicleConfig = vehicleConfig;
+            _screenWidth = _cameraHelper.GetCam().pixelWidth;
+        }
+
+        private void Update()
+        {
 #if UNITY_EDITOR
-        KeyboardInput();
+            KeyboardInput();
 #endif
 
-        MobileInput();
-    }
+#if UNITY_ANDROID
+            MobileInput();
+#endif
+        }
 
-    private void MobileInput()
-    {
-        if (Input.touchCount > 0 && Input.touchCount < 2)
+        private void KeyboardInput()
         {
-            Touch touch = Input.touches[0];
-
-            if (touch.phase == TouchPhase.Stationary && !EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+            switch (_inputHandler.Move.x)
             {
-                if (touch.position.x > (_screenWidth / 2))
-                    _playerMovement.RightTurn();
-                else
-                    _playerMovement.LeftTurn();
+                case 1:
+                    TurnRight();
+                    break;
+
+                case -1:
+                    TurnLeft();
+                    break;
             }
         }
-    }
 
-    private void KeyboardInput()
-    {
-        if (Input.GetKey(KeyCode.RightArrow))
+        private void MobileInput()
         {
-            _playerMovement.RightTurn();
+            //if (Input.touchCount > 0 && Input.touchCount < 2)
+            //{
+            //    Touch touch = Input.touches[0];
+
+            //    if (touch.phase == TouchPhase.Stationary && !EventSystem.current.IsPointerOverGameObject(touch.fingerId))
+            //    {
+            //        if (touch.position.x > (_screenWidth / 2))
+            //            TurnRight();
+            //        else
+            //            TurnLeft();
+            //    }
+            //}
+
+            if (_inputHandler.Touch.phase == TouchPhase.Stationary && !EventSystem.current.IsPointerOverGameObject(_inputHandler.Touch.fingerId))
+            {
+                if (_inputHandler.Touch.position.x > (_screenWidth / 2))
+                    TurnRight();
+                else
+                    TurnLeft();
+            }
         }
-        else if (Input.GetKey(KeyCode.LeftArrow))
+
+        public void TurnLeft()
         {
-            _playerMovement.LeftTurn();
+            transform.Rotate(Vector3.down * _vehicleConfig.vehicleSetting.TurnSpeed * Time.deltaTime);
+        }
+
+        public void TurnRight()
+        {
+            transform.Rotate(Vector3.up * _vehicleConfig.vehicleSetting.TurnSpeed * Time.deltaTime);
         }
     }
 }

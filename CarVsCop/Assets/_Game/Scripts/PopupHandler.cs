@@ -7,14 +7,18 @@ namespace RacerVsCops
     public class PopupHandler : MonoBehaviour
     {
         [SerializeField] private List<UiPopupBase> _uiPopups = new List<UiPopupBase>();
-        [SerializeField] private EssentialConfigData _essentialConfigData;
-        [SerializeField] private EssentialHelperData _essentialHelperData;
+
+        private EssentialConfigData _essentialConfigData;
+        private EssentialHelperData _essentialHelperData;
 
         private Dictionary<Type, UiPopupBase> _uiScreenCollection = new Dictionary<Type, UiPopupBase>();
         private Stack<UiPopupBase> _currentActivePopups = new Stack<UiPopupBase>();
 
-        public void Init()
+        public void Init(EssentialConfigData essentialConfigData, EssentialHelperData essentialHelperData)
         {
+            _essentialConfigData = essentialConfigData;
+            _essentialHelperData = essentialHelperData;
+
             for (int i = 0; i < _uiPopups.Count; i++)
             {
                 _uiPopups[i].Init(this, _essentialConfigData, _essentialHelperData);

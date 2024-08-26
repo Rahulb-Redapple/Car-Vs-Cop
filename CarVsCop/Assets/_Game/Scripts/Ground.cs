@@ -3,10 +3,8 @@ using UnityEngine;
 
 namespace RacerVsCops
 {
-    public class Ground : MonoBehaviour
+    public class Ground : ObjectPoolBase
     {
-        [SerializeField] private PoolObjectType objectType;
-
         private EssentialHelperData _essentialHelperData;
 
         internal void Init(EssentialHelperData essentialHelperData, Vector3 position, Quaternion rotation, Transform parent)
@@ -20,7 +18,7 @@ namespace RacerVsCops
 
         internal void Cleanup()
         {
-            _essentialHelperData.AccessData<ObjectPooling>().ReturnObjectToPool(this.gameObject, objectType);
+            _essentialHelperData.AccessData<ObjectPooling>().ReturnObjectToPool(this, poolObjectType);
         }
     }
 }

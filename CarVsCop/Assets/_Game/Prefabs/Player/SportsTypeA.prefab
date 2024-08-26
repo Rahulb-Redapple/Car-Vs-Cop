@@ -215,11 +215,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioDataList:
   - _audioSource: {fileID: 3281623424657132438}
-    _audioType: 0
+    _audioType: 3
   - _audioSource: {fileID: 4888190356876185408}
-    _audioType: 1
-  - _audioSource: {fileID: 1319073337263091048}
     _audioType: 2
+  - _audioSource: {fileID: 1319073337263091048}
+    _audioType: 1
 --- !u!1 &360521068454971252
 GameObject:
   m_ObjectHideFlags: 0
@@ -317,6 +317,9 @@ GameObject:
   - component: {fileID: 4525252270296059158}
   - component: {fileID: 7792735115580775310}
   - component: {fileID: 1231018958371910769}
+  - component: {fileID: 7219814408448016265}
+  - component: {fileID: 1621521610076942063}
+  - component: {fileID: 344555662456610911}
   m_Layer: 0
   m_Name: SportsTypeA
   m_TagString: Player
@@ -417,6 +420,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28fd6ae0ae8a38145a99faaac037a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _poolObjectType: 0
   _vehicleConfig: {fileID: 11400000, guid: 6867e46c2e17f4b4896b40f12105a016, type: 2}
   _particleTrail: {fileID: 1286297891946922819}
   wheels:
@@ -425,9 +429,9 @@ MonoBehaviour:
   - {fileID: 4013475012127538099}
   - {fileID: 8215071419422917761}
   onHitHealthDecrease: 1
-  poolObjectType: 0
   _vehicleInvincibility: {fileID: 1231018958371910769}
   _vehicleAudioHelper: {fileID: 1168064297700700007}
+  _playerInput: {fileID: 7219814408448016265}
 --- !u!114 &1231018958371910769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,6 +446,62 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _collider: {fileID: 8397213793731063068}
   _invincibleDuration: 2
+--- !u!114 &7219814408448016265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789171095783910900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b109f5bd836aa0d488044ea864d1912e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _inputHandler: {fileID: 1621521610076942063}
+--- !u!114 &1621521610076942063
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789171095783910900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30bfc0289406e8f4a960ae25e03be1dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &344555662456610911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789171095783910900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: f497a23054c71d24c98849a1d68c39e3,
+    type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Player
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &1030454892284254437
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +957,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1244,7 +1304,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -1525,7 +1585,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

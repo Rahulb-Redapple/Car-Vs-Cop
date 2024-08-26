@@ -22,57 +22,59 @@ namespace RacerVsCops
 
     public enum GameplayLoseStatus
     {
-        PLAYERDIED,
-        NONE
+        NONE,
+        PLAYERDIED
     }
 
     public enum ColorInterpolationType
     {
+        NONE,
         PINGPONG,
-        COS,
-        NONE
+        COS
     }
 
     public enum AudioType
     {
-        Music,
+        NONE,
+        MUSIC,
         SFX
     }
 
     public enum Direction
     {
+        NONE,
         UP,
         DOWN,
         LEFT,
-        RIGHT,
-        NONE
+        RIGHT
     }
 
     public enum VehicleAudioType
     {
+        NONE,
         ENGINE_FIRE,
         ENGINE_RUNNING,
-        ENGINE_HIT,
-        NONE
+        ENGINE_HIT
     }
 
     public enum WantedLevel
     {
+        NONE,
         FIRST,
         SECOND,
         THIRD,
-        FOURTH,
-        NONE
+        FOURTH
     }
 
     public enum PoolObjectType
     {
+        NONE,
         PLAYER,
         COP_SEDAN,
         COP_MUSCLE,
         EXPLOSION,
         GROUND,
-        ITEM,
-        NONE
+        HEALTH_UI,
+        STAR_UI
     }
 }

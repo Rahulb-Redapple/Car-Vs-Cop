@@ -563,6 +563,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64a0338f3c440ca4d963ceb1524ad75e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _poolObjectType: 2
   _vehicleConfig: {fileID: 11400000, guid: 78bdebe56db794a4c86b8e01d91b21c4, type: 2}
   _particleTrail: {fileID: 4565300527661907609}
   wheels:
@@ -571,7 +572,6 @@ MonoBehaviour:
   - {fileID: 9114791522163320218}
   - {fileID: 8079460692577957825}
   onHitHealthDecrease: 1
-  poolObjectType: 1
   _copsLight: {fileID: 7972643228724577131}
 --- !u!1 &1507046060425424548
 GameObject:

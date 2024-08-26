@@ -31,17 +31,18 @@ namespace RacerVsCops
 					audioConfig.AudioList[i].volume, audioConfig.AudioList[i].pitch, audioConfig.AudioList[i].loop, 
 					audioConfig.AudioList[i].playOnAwake, audioConfig.AudioList[i].audioType);
 
-				if (audio.type == AudioType.Music)
-				{
-                    audio.source.transform.SetParent(musicParent);
-					audio.source.outputAudioMixerGroup = musicAudioMixerGroup;
-                }
-				else
-				{
-                    audio.source.transform.SetParent(sfxParent);
-					audio.source.outputAudioMixerGroup = sfxAudioMixerGroup;   
-                }
+                switch(audio.type)
+                {
+                    case AudioType.MUSIC:
+                        audio.source.transform.SetParent(musicParent);
+                        audio.source.outputAudioMixerGroup = musicAudioMixerGroup;
+                        break;
 
+                    case AudioType.SFX:
+                        audio.source.transform.SetParent(sfxParent);
+                        audio.source.outputAudioMixerGroup = sfxAudioMixerGroup;
+                        break;
+                }
 				audioSourceDatas.Add(audio);
             }
         }
