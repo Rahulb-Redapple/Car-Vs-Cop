@@ -42,7 +42,7 @@ namespace RacerVsCops
 
         internal void Cleanup()
         {
-            if(Equals(_blinkingEffectCoroutine, null))
+            if(!Equals(_blinkingEffectCoroutine, null))
             {
                 StopCoroutine(_blinkingEffectCoroutine);
             }

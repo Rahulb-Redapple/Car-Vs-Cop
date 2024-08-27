@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f94b487b236efbe4291fdef1ec5f58e6, type: 3}
-  m_Name: MuscleTypeB
+  m_Name: TaxiSedan
   m_EditorClassIdentifier: 
   _vehicleSetting:
     _moveSpeed: 37
@@ -18,10 +18,10 @@ MonoBehaviour:
     _wheelRotSpeed: 170
     _totalHealth: 4
   _vehicleDatum:
-    _id: 106
-    _vehiclePrefab: {fileID: 7792735115580775310, guid: d014a3a034f8bbd4f9c3858168263bd4,
+    _id: 101
+    _vehiclePrefab: {fileID: 7792735115580775310, guid: 4e0a7859dde7c3040b829d30c99926ba,
       type: 3}
-    _vehiclePrice: 3000
+    _vehiclePrice: 0
     _vehicleName: 
     _vehicleIcon: {fileID: 0}
-    _vehicleCategory: 6
+    _vehicleCategory: 3

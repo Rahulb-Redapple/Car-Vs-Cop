@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6932493264182236452}
   - component: {fileID: 8283939740553091735}
   - component: {fileID: 97936213570871949}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheel sports
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 2612144001224792648}
   - component: {fileID: 3633645187470387866}
   - component: {fileID: 7711870514502725613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheel sports
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -176,7 +176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2217796121509350622}
   - component: {fileID: 1168064297700700007}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FX_Effect_Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 3236320649219430957}
   - component: {fileID: 5791405399562158046}
   - component: {fileID: 3955619662334080739}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: exhaust
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -320,7 +320,7 @@ GameObject:
   - component: {fileID: 7219814408448016265}
   - component: {fileID: 1621521610076942063}
   - component: {fileID: 344555662456610911}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SportsTypeA
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -431,6 +431,7 @@ MonoBehaviour:
   onHitHealthDecrease: 1
   _vehicleInvincibility: {fileID: 1231018958371910769}
   _vehicleAudioHelper: {fileID: 1168064297700700007}
+  _rotator: {fileID: 6101708551120466336}
   _playerInput: {fileID: 7219814408448016265}
 --- !u!114 &1231018958371910769
 MonoBehaviour:
@@ -511,7 +512,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1348332508927384924}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheel front right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +546,7 @@ GameObject:
   - component: {fileID: 8516001179842305441}
   - component: {fileID: 4753514443321796925}
   - component: {fileID: 8467417231294740440}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheel sports
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -626,8 +627,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7311447518179868388}
-  m_Layer: 0
-  m_Name: sports type a color 1
+  - component: {fileID: 2735652347058834294}
+  - component: {fileID: 6101708551120466336}
+  m_Layer: 8
+  m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -650,6 +653,34 @@ Transform:
   - {fileID: 506895438429373914}
   m_Father: {fileID: 4183317797448404791}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2735652347058834294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3116136585325799604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 319ccf7bd10c8144697e177f2476b904, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _meshRenderersList:
+  - {fileID: 1164999878175108438}
+  - {fileID: 3955619662334080739}
+  - {fileID: 3015173026823325796}
+--- !u!114 &6101708551120466336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3116136585325799604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00e7da7ac86348e4b883205664a38a3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3326974432506778378
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,7 +692,7 @@ GameObject:
   - component: {fileID: 1575188182282814264}
   - component: {fileID: 3119612405688702804}
   - component: {fileID: 3015173026823325796}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: mirrors and handles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -743,7 +774,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5124843080982965895}
   - component: {fileID: 8404441299925665266}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -879,7 +910,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5627030607417613929}
   - component: {fileID: 4888190356876185408}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EngineRunning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1008,7 +1039,7 @@ GameObject:
   - component: {fileID: 5036651053618175363}
   - component: {fileID: 952113420610156008}
   - component: {fileID: 7380323809133218349}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheel sports
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1090,7 +1121,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4616649528008683820}
   - component: {fileID: 1286297891946922819}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: FX_Effects_Health
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1144,7 +1175,7 @@ GameObject:
   - component: {fileID: 8545398827678933622}
   - component: {fileID: 7049071417771839652}
   - component: {fileID: 1164999878175108438}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1226,7 +1257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5722255910855546822}
   - component: {fileID: 3281623424657132438}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EngineFire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1355,7 +1386,7 @@ GameObject:
   - component: {fileID: 2645777234822982137}
   - component: {fileID: 7104235200872042159}
   - component: {fileID: 7340944248550774530}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1471,7 +1502,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 506895438429373914}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheels
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1507,7 +1538,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4787485139983507552}
   - component: {fileID: 1319073337263091048}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: EngineHit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1634,7 +1665,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4013475012127538099}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheel back right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1666,7 +1697,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7428656090243105730}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: sports type a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1700,7 +1731,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8215071419422917761}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheel back left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1732,7 +1763,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3495805432383621246}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: wheel front left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1767,6 +1798,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FX_Trail_Smoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 3062009993693816288, guid: 5a0599a6f1222c64fbc3fa383921426b,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4665424246403982004, guid: 5a0599a6f1222c64fbc3fa383921426b,
         type: 3}
@@ -1898,6 +1934,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: FX_Trail_Fire
       objectReference: {fileID: 0}
+    - target: {fileID: 1982842984433217001, guid: 8bacdaae326ccb04b998901aa3e9b28c,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1977,6 +2018,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: FX_Trail_FireSmoke
+      objectReference: {fileID: 0}
+    - target: {fileID: 3953716263527834590, guid: f173a0db63b93f746a4e463b85c6f935,
+        type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

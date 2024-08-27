@@ -17,6 +17,9 @@ namespace RacerVsCops
 
         [SerializeField] private GameplayConfig _gameplayConfig;
         internal GameplayConfig gameplayConfig => _gameplayConfig;
+
+        [SerializeField] private ShopConfig _shopConfig;
+        internal ShopConfig shopConfig => _shopConfig;
     }
 
     [Serializable]
@@ -38,5 +41,12 @@ namespace RacerVsCops
     {
         [SerializeField] private int _totalWantedLevel;
         internal int TotalWantedLevel => _totalWantedLevel;
+    }
+
+    [Serializable]
+    public class ShopConfig
+    {
+        [SerializeField] private float _rotateSpeed;
+        internal float RotationSpeed => _rotateSpeed;
     }
 }

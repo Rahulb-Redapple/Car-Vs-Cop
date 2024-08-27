@@ -13,5 +13,10 @@ MonoBehaviour:
   m_Name: VehicleData
   m_EditorClassIdentifier: 
   vehicleConfigs:
+  - {fileID: 11400000, guid: ec1ea7eb45a5d0d4ea5e7c131fd91e19, type: 2}
+  - {fileID: 11400000, guid: c5dd9e2a80ef9b0429b6ee91d44f4cc6, type: 2}
   - {fileID: 11400000, guid: 6867e46c2e17f4b4896b40f12105a016, type: 2}
+  - {fileID: 11400000, guid: 0aa9941a3237fa54bae46df0b22bd692, type: 2}
+  - {fileID: 11400000, guid: f633b0b5e09e65146ae6a115292e3230, type: 2}
   - {fileID: 11400000, guid: 8793a0f7f8f038841bc5e9ce981ace2a, type: 2}
+  - {fileID: 11400000, guid: 94a948c4559d578479a402cde7d40775, type: 2}

@@ -15,3 +15,4 @@ MonoBehaviour:
   _essentialConfigList:
   - {fileID: 11400000, guid: cb2d2f4d41d88e449b5fc942d2dc7c2f, type: 2}
   - {fileID: 11400000, guid: af9f1d150c93b284c8b3dbe8a43a6cc0, type: 2}
+  - {fileID: 11400000, guid: 6b72d65936ea7e44bbea8842e816ed6f, type: 2}

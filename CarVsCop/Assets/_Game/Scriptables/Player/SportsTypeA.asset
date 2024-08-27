@@ -18,9 +18,10 @@ MonoBehaviour:
     _wheelRotSpeed: 170
     _totalHealth: 4
   _vehicleDatum:
-    _id: 101
+    _id: 103
     _vehiclePrefab: {fileID: 7792735115580775310, guid: 3ed4844679033df42aadb505fec5c907,
       type: 3}
-    _vehiclePrice: 0
+    _vehiclePrice: 5000
     _vehicleName: 
     _vehicleIcon: {fileID: 0}
+    _vehicleCategory: 8

@@ -77,4 +77,18 @@ namespace RacerVsCops
         HEALTH_UI,
         STAR_UI
     }
+
+    public enum VehicleCategory
+    {
+        NONE,
+        SEDAN,
+        PICKUP,
+        TAXI_SEDAN,
+        TAXI_MUSCLE,
+        MUSCLE_TYPE_A,
+        MUSCLE_TYPE_B,
+        MUSCLE_TYPE_C,
+        SPORTS_TYPE_A,
+        SPORTS_TYPE_B
+    }
 }

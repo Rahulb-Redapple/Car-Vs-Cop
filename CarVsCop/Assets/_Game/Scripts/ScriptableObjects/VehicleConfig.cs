@@ -35,12 +35,14 @@ namespace RacerVsCops
             [SerializeField] private int _vehiclePrice;
             [SerializeField] private string _vehicleName;
             [SerializeField] private Sprite _vehicleIcon;
+            [SerializeField] private VehicleCategory _vehicleCategory;
 
             internal int ID => _id;
             internal VehicleBase VehiclePrefab => _vehiclePrefab;
             internal int VehiclePrice => _vehiclePrice;
             internal string VehicleName => _vehicleName;
             internal Sprite vehicleIcon => _vehicleIcon;
+            internal VehicleCategory VehicleCategory => _vehicleCategory;
         }
     }
 }

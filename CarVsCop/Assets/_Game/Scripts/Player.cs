@@ -9,9 +9,12 @@ namespace RacerVsCops
     {
         [SerializeField] private VehicleInvincibility _vehicleInvincibility;
         [SerializeField] private VehicleAudioHelper _vehicleAudioHelper;
+        [SerializeField] private Rotator _rotator;
         [SerializeField] private PlayerInput _playerInput;
 
         private CameraHelper _cameraHelper;
+
+        internal Rotator Rotator => _rotator;
 
         internal void ReadyToPlay(CameraHelper cameraHelper)
         {

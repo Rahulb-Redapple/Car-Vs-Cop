@@ -135,7 +135,15 @@ namespace RacerVsCops
         [JsonProperty(PropertyName = "currentInUseCarId")]
         private int _currentInUseCarId = 101;
 
-        [JsonIgnore] public ReadOnlyCollection<int> PurchasedMallets => _purchasedCars.AsReadOnly();
+        [JsonIgnore] public ReadOnlyCollection<int> PurchasedCars => _purchasedCars.AsReadOnly();
+
+        public void AddDefaultCar() 
+        {
+            if (!_purchasedCars.Contains(_currentInUseCarId))
+                _purchasedCars.Add(_currentInUseCarId);
+            else
+                return;
+        }
 
         public void AddNewPurchasedCar(int purchasedCarId)
         {

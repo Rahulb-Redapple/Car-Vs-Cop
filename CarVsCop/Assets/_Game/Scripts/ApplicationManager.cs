@@ -17,6 +17,7 @@ namespace RacerVsCops
         private void Awake()
         {
             _playerSaveData = PlayerDataHandler.LoadPlayerData();
+            PlayerDataHandler.Player.Inventory.AddDefaultCar();
             Application.targetFrameRate = 60;
             _essentialConfigData = Resources.Load<EssentialConfigData>(nameof(EssentialConfigData));
             _essentialConfigData.Init();

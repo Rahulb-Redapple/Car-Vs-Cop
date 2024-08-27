@@ -21,3 +21,5 @@ MonoBehaviour:
     _elasticity: 2
   _gameplayConfig:
     _totalWantedLevel: 4
+  _shopConfig:
+    _rotateSpeed: 50
