@@ -13,7 +13,7 @@ namespace RacerVsCops
             Invoke(nameof(Cleanup), (explosionPS.main.duration + explosionPS.startLifetime));
         }
 
-        private void Cleanup()
+        internal override void Cleanup()
         {
             _objectPooling.ReturnObjectToPool(this, poolObjectType);
         }

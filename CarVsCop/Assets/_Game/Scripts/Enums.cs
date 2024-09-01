@@ -75,20 +75,31 @@ namespace RacerVsCops
         EXPLOSION,
         GROUND,
         HEALTH_UI,
-        STAR_UI
+        STAR_UI,
+        COLOR_ITEM
+    }
+
+    public enum CashType
+    {
+        NONE = 0,
+        PLAYING,
+        SPEND,
+        HOURLY_BONUS,
+        DAILY_REWARD,
+        ACHIEVEMENT
     }
 
     public enum VehicleCategory
     {
-        NONE,
-        SEDAN,
-        PICKUP,
-        TAXI_SEDAN,
-        TAXI_MUSCLE,
-        MUSCLE_TYPE_A,
-        MUSCLE_TYPE_B,
-        MUSCLE_TYPE_C,
-        SPORTS_TYPE_A,
-        SPORTS_TYPE_B
+        NONE = 0,
+        TAXI_SEDAN = 101,
+        TAXI_MUSCLE = 102,
+        SPORTS_TYPE_A = 103,
+        SPORTS_TYPE_B = 104,
+        MUSCLE_TYPE_A = 105,
+        MUSCLE_TYPE_B = 106,
+        MUSCLE_TYPE_C = 107,
+        SEDAN = 108,
+        PICKUP = 109
     }
 }

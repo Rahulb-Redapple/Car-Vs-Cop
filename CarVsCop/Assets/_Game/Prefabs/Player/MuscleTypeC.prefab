@@ -218,6 +218,7 @@ MonoBehaviour:
   _vehicleInvincibility: {fileID: 1231018958371910769}
   _vehicleAudioHelper: {fileID: 1168064297700700007}
   _rotator: {fileID: 6321746486325798287}
+  _materialHandler: {fileID: 3743442779796800236}
   _playerInput: {fileID: 7219814408448016265}
 --- !u!114 &1231018958371910769
 MonoBehaviour:
@@ -749,7 +750,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 15609b4596eada744b8fd0d9eea0a13e, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1

@@ -29,21 +29,15 @@ namespace RacerVsCops
 
         internal void ReadyToPlay()
         {
-            for(int i=0; i < _vehicleData.VehicleConfigs.Count; i++)
-            {
-                if (_vehicleData.VehicleConfigs[i].vehicleDatum.ID == PlayerDataHandler.Player.Inventory.GetCurrentInUseCarId())
-                {
-                    _player = Instantiate(_vehicleData.VehicleConfigs[i].vehicleDatum.VehiclePrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Player>();
-                    _player.Init(_gameplayHelper, _essentialHelperData);
-                    _player.Init(_objectPooling);
-                    _player.ReadyToPlay(_cameraHelper);
-                    _player.SetVisibility(true);
-                    _copSpawnHelper.SetTarget(_player.transform);
-                    _cameraHelper.SetTarget(_player.transform);
-                    _groundGridHelper.ReadyToPlay(_player.transform);
-                    break;
-                }
-            }
+            _player = Instantiate(_vehicleData.GetVehicleConfig(PlayerDataHandler.Player.Inventory.GetCurrentInUseCarId()).vehicleDatum.VehiclePrefab, Vector3.zero, Quaternion.identity, transform).GetComponent<Player>();
+            _player.Init(_gameplayHelper, _essentialHelperData);
+            _player.Init(_objectPooling);
+            _player.ReadyToPlay(_cameraHelper);
+            //_player.MaterialHandler.SetMaterial()
+            _player.SetVisibility(true);
+            _copSpawnHelper.SetTarget(_player.transform);
+            _cameraHelper.SetTarget(_player.transform);
+            _groundGridHelper.ReadyToPlay(_player.transform);
         }
 
         internal void Cleanup()

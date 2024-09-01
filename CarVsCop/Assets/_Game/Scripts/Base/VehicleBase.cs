@@ -77,6 +77,5 @@ namespace RacerVsCops
         }
 
         internal abstract void OnCollisionEnter(Collision collision);
-        internal abstract void Cleanup();
     }
 }

@@ -13,10 +13,10 @@ namespace RacerVsCops
             transform.position = position;
             transform.rotation = rotation;
             transform.SetParent(parent);
-            gameObject.SetActive(true);
+            SetVisibility(true);
         }
 
-        internal void Cleanup()
+        internal override void Cleanup()
         {
             _essentialHelperData.AccessData<ObjectPooling>().ReturnObjectToPool(this, poolObjectType);
         }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using System.Collections.ObjectModel;
 using System;
+using System.Linq;
 
 namespace RacerVsCops
 {
@@ -53,17 +54,8 @@ namespace RacerVsCops
     [Serializable]
     public sealed class GameCurrency
     {
-        [JsonProperty(PropertyName = "cashCount")]
-        private long _cashCount = 0;
-
-        [JsonProperty(PropertyName = "earnedCashCount")]
-        private long _earnedCashCount = 0;
-
-        [JsonIgnore]
-        public long Cash => _cashCount;
-
-        [JsonIgnore]
-        public long EarnedCash => _earnedCashCount;
+        [JsonProperty(PropertyName = "CashData")]
+        private Dictionary<CashType, long> _cashDict = new Dictionary<CashType, long>();
 
         /// <summary>
         /// Update the amount of cash the player has.
@@ -71,33 +63,33 @@ namespace RacerVsCops
         /// <param name="cashCount">Amount of cash to be increased or deducted.
         /// A positive value will add cash.
         /// A negatve value will deduct cash.</param>
-        public void UpdateCash(long cashCount)
+        public void UpdateCash(CashType cashType, long cashAmount)
         {
-            _cashCount += cashCount;
-            if (_cashCount < 0)
+            if(!_cashDict.ContainsKey(cashType))
             {
-                _cashCount = 0;
+                _cashDict.Add(cashType, 0);
             }
+            _cashDict[cashType] += cashAmount;   
+
             //GameHelper.Instance.InvokeAction(GameConstants.CashAmountUpdated, _cashCount);
         }
 
-        public long GetCashAmount()
+        public long GetCashByType(CashType cashType)
         {
-            return _cashCount;
-        }
-
-        public void UpdateEarnedCash(long earnedCashCount)
-        {
-            _earnedCashCount += earnedCashCount;
-            if (_earnedCashCount < 0)
+            if (_cashDict.ContainsKey(cashType))
             {
-                earnedCashCount = 0;
+                return _cashDict[cashType];
             }
+            else
+            {
+                _cashDict.Add(cashType, 0);
+            }
+            return _cashDict[cashType];
         }
 
-        public long GetEarnedCashAmount()
+        public long GetTotalCash()
         {
-            return _earnedCashCount;
+            return _cashDict.Sum(amount => amount.Value);
         }
     }
 
@@ -129,26 +121,52 @@ namespace RacerVsCops
     [Serializable]
     public sealed class Inventory
     {
-        [JsonProperty(PropertyName = "purchasedCars")]
-        private List<int> _purchasedCars = new List<int>();
+        [JsonProperty(PropertyName = "purchasedCarsDict")]
+        private Dictionary<int, List<string>> _purchasedCarsDict = new Dictionary<int, List<string>>();
 
         [JsonProperty(PropertyName = "currentInUseCarId")]
         private int _currentInUseCarId = 101;
 
-        [JsonIgnore] public ReadOnlyCollection<int> PurchasedCars => _purchasedCars.AsReadOnly();
+        [JsonIgnore] public Dictionary<int, List<string>> PurchasedCarsDict => _purchasedCarsDict;
 
-        public void AddDefaultCar() 
+        public void AddDefaultCar(string materialCode) 
         {
-            if (!_purchasedCars.Contains(_currentInUseCarId))
-                _purchasedCars.Add(_currentInUseCarId);
+            if (_purchasedCarsDict.ContainsKey(_currentInUseCarId))
+            {
+                List<string> materialCodeList = _purchasedCarsDict[_currentInUseCarId];
+                if(!materialCodeList.Contains(materialCode))
+                {
+                    materialCodeList.Add(materialCode);
+                }
+            }
             else
-                return;
+            {
+                List<string> materialCodeList = new List<string>();
+                materialCodeList.Add(materialCode);
+                _purchasedCarsDict.Add(_currentInUseCarId, materialCodeList);
+            }
         }
 
-        public void AddNewPurchasedCar(int purchasedCarId)
+        public void AddNewPurchasedCar(int purchasedCarId, string materialCode)
         {
-            if (!_purchasedCars.Contains(purchasedCarId))
-                _purchasedCars.Add(purchasedCarId);
+            if (!_purchasedCarsDict.ContainsKey(purchasedCarId))
+            {
+                List<string> materialCodeList = new List<string>();
+                materialCodeList.Add(materialCode);
+                _purchasedCarsDict.Add(purchasedCarId, materialCodeList);
+            }                
+        }
+
+        public void AddNewVehicleMaterial(int purchasedCarId, string materialCode)
+        {
+            if (_purchasedCarsDict.ContainsKey(purchasedCarId))
+            {
+                List<string> materialCodeList = _purchasedCarsDict[_currentInUseCarId];
+                if (!materialCodeList.Contains(materialCode))
+                {
+                    materialCodeList.Add(materialCode);
+                }
+            }
         }
 
         public void SetCurrentInUseCar(int currentInUseCarId)
@@ -160,5 +178,24 @@ namespace RacerVsCops
         {
             return _currentInUseCarId;
         }
+
+        //[Serializable]
+        //public sealed class VehicleAdditionalData
+        //{
+        //    [JsonProperty(PropertyName = "vehicleMaterialCode")]
+        //    private List<string> _vehicleMaterialCode = new List<string>();
+
+        //    [JsonIgnore]
+        //    public List<string> VehicleMaterialCode => _vehicleMaterialCode;
+
+        //    private VehicleAdditionalData() { }
+
+        //    public VehicleAdditionalData(string vehicleMaterialCode)
+        //    {
+        //        if(!_vehicleMaterialCode.Contains(vehicleMaterialCode))
+        //            _vehicleMaterialCode.Add(vehicleMaterialCode);
+        //    }   
+        //}
     }
+
 }

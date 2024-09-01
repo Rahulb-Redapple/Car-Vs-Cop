@@ -20,21 +20,12 @@ namespace RacerVsCops
 
         internal override void HandleGameStateChangeData(object[] data)
         {
-            PlayerDataHandler.Player.Inventory.SetCurrentInUseCar(101);
             SetFetchedVehicle();
-
         }
 
         private void SetFetchedVehicle()
         {
-            for(int i=0; i<_vehicleData.VehicleConfigs.Count; i++)
-            {
-                if (_vehicleData.VehicleConfigs[i].vehicleDatum.ID == PlayerDataHandler.Player.Inventory.GetCurrentInUseCarId())
-                {
-                    GameConstants.CurrentVehicleConfig = _vehicleData.VehicleConfigs[i];
-                    break;
-                }
-            }
+            GameConstants.CurrentVehicleConfig = _vehicleData.GetVehicleConfig(PlayerDataHandler.Player.Inventory.GetCurrentInUseCarId());
         }
 
         public void play()

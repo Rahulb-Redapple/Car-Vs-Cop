@@ -20,6 +20,8 @@ namespace SimpleObjectPoolingSystem
         {
             gameObject.SetActive(isActive); 
         }
+
+        internal abstract void Cleanup();
     }
 
     [System.Serializable]

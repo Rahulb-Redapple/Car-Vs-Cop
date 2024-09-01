@@ -13,44 +13,113 @@ MonoBehaviour:
   m_Name: VehicleColorConfig
   m_EditorClassIdentifier: 
   _colorConfigList:
-  - _vehicleCategory: 1
+  - _vehicleCategory: 108
     _materialsList:
-    - {fileID: 2100000, guid: 8aaca49e5f4e0904d9634a01ed77ffe1, type: 2}
-    - {fileID: 2100000, guid: c16dfa7cbf4655040b1ef7fe2a780a04, type: 2}
-    - {fileID: 2100000, guid: 6984a694826714942829b8826b997968, type: 2}
-  - _vehicleCategory: 2
+    - _material: {fileID: 2100000, guid: 8aaca49e5f4e0904d9634a01ed77ffe1, type: 2}
+      _color: {r: 0, g: 0, b: 0, a: 0}
+      _materialCode: sedan_01
+      _price: 0
+    - _material: {fileID: 2100000, guid: c16dfa7cbf4655040b1ef7fe2a780a04, type: 2}
+      _color: {r: 0, g: 0, b: 0, a: 0}
+      _materialCode: sedan_02
+      _price: 100
+    - _material: {fileID: 2100000, guid: 6984a694826714942829b8826b997968, type: 2}
+      _color: {r: 0, g: 0, b: 0, a: 0}
+      _materialCode: sedan_03
+      _price: 200
+  - _vehicleCategory: 109
     _materialsList:
-    - {fileID: 2100000, guid: bbc2b5bc2152f534988bf3f5a2eef82d, type: 2}
-    - {fileID: 2100000, guid: 7acd2e3451c49fa499ec08ddcb22abc3, type: 2}
-    - {fileID: 2100000, guid: cc74a1b71e2cee04bbd992e89a72d1d7, type: 2}
-  - _vehicleCategory: 3
+    - _material: {fileID: 2100000, guid: bbc2b5bc2152f534988bf3f5a2eef82d, type: 2}
+      _color: {r: 0, g: 0, b: 0, a: 0}
+      _materialCode: pickup_01
+      _price: 0
+    - _material: {fileID: 2100000, guid: 7acd2e3451c49fa499ec08ddcb22abc3, type: 2}
+      _color: {r: 0, g: 0, b: 0, a: 0}
+      _materialCode: pickup_02
+      _price: 100
+    - _material: {fileID: 2100000, guid: cc74a1b71e2cee04bbd992e89a72d1d7, type: 2}
+      _color: {r: 0, g: 0, b: 0, a: 0}
+      _materialCode: pickup_03
+      _price: 200
+  - _vehicleCategory: 101
     _materialsList:
-    - {fileID: 2100000, guid: c2d022af96968cf45ad76e153c0eeb36, type: 2}
-  - _vehicleCategory: 4
+    - _material: {fileID: 2100000, guid: c2d022af96968cf45ad76e153c0eeb36, type: 2}
+      _color: {r: 0.9686275, g: 0.854902, b: 0.42352945, a: 1}
+      _materialCode: taxi_sedan_01
+      _price: 0
+  - _vehicleCategory: 102
     _materialsList:
-    - {fileID: 2100000, guid: 98ca22e1cc5ca13489f0eebb1733ee5e, type: 2}
-  - _vehicleCategory: 5
+    - _material: {fileID: 2100000, guid: 98ca22e1cc5ca13489f0eebb1733ee5e, type: 2}
+      _color: {r: 0.9686275, g: 0.854902, b: 0.42352945, a: 1}
+      _materialCode: taxi_muscle_01
+      _price: 100
+  - _vehicleCategory: 105
     _materialsList:
-    - {fileID: 2100000, guid: 90be8a7f3b30fc44e9a5003ed7dba622, type: 2}
-    - {fileID: 2100000, guid: d8373a6f15be7304c95bea3c8f0d5419, type: 2}
-    - {fileID: 2100000, guid: 31f5e72108568254492e0bf13b0c48f6, type: 2}
-  - _vehicleCategory: 6
+    - _material: {fileID: 2100000, guid: 90be8a7f3b30fc44e9a5003ed7dba622, type: 2}
+      _color: {r: 0.7568628, g: 0.3647059, b: 0.34901962, a: 1}
+      _materialCode: muscle_type_a_01
+      _price: 0
+    - _material: {fileID: 2100000, guid: d8373a6f15be7304c95bea3c8f0d5419, type: 2}
+      _color: {r: 0.93725497, g: 0.57254905, b: 0.27058825, a: 1}
+      _materialCode: muscle_type_a_02
+      _price: 100
+    - _material: {fileID: 2100000, guid: 31f5e72108568254492e0bf13b0c48f6, type: 2}
+      _color: {r: 0.5254902, g: 0.65882355, b: 0.854902, a: 1}
+      _materialCode: muscle_type_a_03
+      _price: 200
+  - _vehicleCategory: 106
     _materialsList:
-    - {fileID: 2100000, guid: 692eefccb3db8934f9a30fec03048098, type: 2}
-    - {fileID: 2100000, guid: d38257180eafb7244a9b0172a23a069a, type: 2}
-    - {fileID: 2100000, guid: a79c391ed2764b74a9a1faf43ad2f707, type: 2}
-  - _vehicleCategory: 7
+    - _material: {fileID: 2100000, guid: 692eefccb3db8934f9a30fec03048098, type: 2}
+      _color: {r: 0.2627451, g: 0.5058824, b: 0.61960787, a: 1}
+      _materialCode: muscle_type_b_01
+      _price: 0
+    - _material: {fileID: 2100000, guid: d38257180eafb7244a9b0172a23a069a, type: 2}
+      _color: {r: 0.9333334, g: 0.86274517, b: 0.43529415, a: 1}
+      _materialCode: muscle_type_b_02
+      _price: 100
+    - _material: {fileID: 2100000, guid: a79c391ed2764b74a9a1faf43ad2f707, type: 2}
+      _color: {r: 0.47058827, g: 0.47450984, b: 0.4666667, a: 1}
+      _materialCode: muscle_type_b_03
+      _price: 200
+  - _vehicleCategory: 107
     _materialsList:
-    - {fileID: 2100000, guid: 5bf0abfccbde8e84ba093a905b436b13, type: 2}
-    - {fileID: 2100000, guid: 4ec0058e643606d4bbd13ce409ec3d92, type: 2}
-    - {fileID: 2100000, guid: e956f058bc8a81c4f8a46730a9cf2f9b, type: 2}
-  - _vehicleCategory: 8
+    - _material: {fileID: 2100000, guid: 5bf0abfccbde8e84ba093a905b436b13, type: 2}
+      _color: {r: 0.7725491, g: 0.30588236, b: 0.41176474, a: 1}
+      _materialCode: muscle_type_c_01
+      _price: 0
+    - _material: {fileID: 2100000, guid: 4ec0058e643606d4bbd13ce409ec3d92, type: 2}
+      _color: {r: 0.9607844, g: 0.89019614, b: 0.5176471, a: 1}
+      _materialCode: muscle_type_c_02
+      _price: 100
+    - _material: {fileID: 2100000, guid: e956f058bc8a81c4f8a46730a9cf2f9b, type: 2}
+      _color: {r: 0.94117653, g: 0.94117653, b: 0.94117653, a: 1}
+      _materialCode: muscle_type_c_03
+      _price: 200
+  - _vehicleCategory: 103
     _materialsList:
-    - {fileID: 2100000, guid: 37caefd6ad1b9664b88d4ff30f5d6b7c, type: 2}
-    - {fileID: 2100000, guid: 44e259f53fea44e4b8a5f970a69a1106, type: 2}
-    - {fileID: 2100000, guid: 5eb6b9a26769af04b9011e8b60a807c7, type: 2}
-  - _vehicleCategory: 9
+    - _material: {fileID: 2100000, guid: 37caefd6ad1b9664b88d4ff30f5d6b7c, type: 2}
+      _color: {r: 0.85098046, g: 0.31764707, b: 0.28235295, a: 1}
+      _materialCode: sports_type_a_01
+      _price: 0
+    - _material: {fileID: 2100000, guid: 44e259f53fea44e4b8a5f970a69a1106, type: 2}
+      _color: {r: 0.44705886, g: 0.6901961, b: 0.7960785, a: 1}
+      _materialCode: sports_type_a_02
+      _price: 100
+    - _material: {fileID: 2100000, guid: 5eb6b9a26769af04b9011e8b60a807c7, type: 2}
+      _color: {r: 0.9960785, g: 0.6627451, b: 0.25490198, a: 1}
+      _materialCode: sports_type_a_03
+      _price: 200
+  - _vehicleCategory: 104
     _materialsList:
-    - {fileID: 2100000, guid: af1d23d45bd283a40987c2128fe3c964, type: 2}
-    - {fileID: 2100000, guid: 02756bdc60fb03d4fa04c63302d3a7b8, type: 2}
-    - {fileID: 2100000, guid: 03c3d0a8296ba544b946047d88773f26, type: 2}
+    - _material: {fileID: 2100000, guid: af1d23d45bd283a40987c2128fe3c964, type: 2}
+      _color: {r: 0.96470594, g: 0.89019614, b: 0.4784314, a: 1}
+      _materialCode: sports_type_b_01
+      _price: 0
+    - _material: {fileID: 2100000, guid: 02756bdc60fb03d4fa04c63302d3a7b8, type: 2}
+      _color: {r: 0.45882356, g: 0.45098042, b: 0.43137258, a: 1}
+      _materialCode: sports_type_b_02
+      _price: 100
+    - _material: {fileID: 2100000, guid: 03c3d0a8296ba544b946047d88773f26, type: 2}
+      _color: {r: 0.8117648, g: 0.8745099, b: 0.427451, a: 1}
+      _materialCode: sports_type_b_02
+      _price: 200

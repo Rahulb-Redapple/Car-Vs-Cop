@@ -59,15 +59,15 @@ namespace RacerVsCops
             _starImage.sprite = sprite;
         }
 
-        internal void Cleanup()
+        internal override void Cleanup()
         {
-            if(!Equals(_blinkingCoroutine, null))
+            if (!Equals(_blinkingCoroutine, null))
             {
                 StopCoroutine(_blinkingCoroutine);
             }
             UpdateStarSprite(_emptyStarImage);
 
-            _objectPooling.ReturnObjectToPool(this, poolObjectType);    
+            _objectPooling.ReturnObjectToPool(this, poolObjectType);
         }
     }
 }

@@ -27,9 +27,11 @@ namespace RacerVsCops
         [SerializeField] private CarUiData _carUiData;
         [SerializeField] private Transform _vehicleParent;
         [SerializeField] private Transform _itemDisplayRawImage;
+        [SerializeField] private BuyVehicleButton _buyVehicleButton;
 
         private VehicleData _vehicleData;
         private VehicleContainer _vehicleContainer;
+        private VehicleColorConfig _vehicleColorConfig;
 
         private List<Player> _carList = new List<Player>();
 
@@ -39,6 +41,8 @@ namespace RacerVsCops
         {
             base.Init(popupHandler, essentialConfigData, essentialHelperData);
             _vehicleData = _essentialConfigData.AccessConfig<VehicleData>();
+            _vehicleColorConfig = _essentialConfigData.AccessConfig<VehicleColorConfig>();
+            _buyVehicleButton.Init(_essentialConfigData, _popupHandler);
         }
 
         internal override void HandlePopupToggleData(bool isView, object[] data)
@@ -51,6 +55,9 @@ namespace RacerVsCops
                 _vehicleContainer.PopulateVehicles();
                 PopulateVehicles();
                 SetItemStatus();
+
+                //PlayerDataHandler.Player.GameCurrency.UpdateCash(CashType.PLAYING, 10000);
+                Debug.Log($"Balance :: {PlayerDataHandler.Player.GameCurrency.GetTotalCash()}");
             }
         }
 
@@ -132,6 +139,8 @@ namespace RacerVsCops
             _carUiData.CarPriceText.text = $"Price {vehicleConfig.vehicleDatum.VehiclePrice}";
             _carUiData.CarSpeedText.text = $"Speed {vehicleConfig.vehicleSetting.MoveSpeed}";
             _carUiData.CarHealthText.text = $"Health {vehicleConfig.vehicleSetting.TotalHealth}";
+
+            _buyVehicleButton.EvaluateVehiclePurchase(vehicleConfig.vehicleDatum.ID);
         }
 
         public void CloseShop()

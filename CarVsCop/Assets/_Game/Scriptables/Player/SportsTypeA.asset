@@ -24,4 +24,4 @@ MonoBehaviour:
     _vehiclePrice: 5000
     _vehicleName: 
     _vehicleIcon: {fileID: 0}
-    _vehicleCategory: 8
+    _vehicleCategory: 103

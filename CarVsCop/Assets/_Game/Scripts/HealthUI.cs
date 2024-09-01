@@ -24,7 +24,7 @@ namespace RacerVsCops
             _healthImage.sprite = isFull ? _fullSprite : _emptySprite;
         }
 
-        internal void Cleanup()
+        internal override void Cleanup()
         {
             _objectPooling.ReturnObjectToPool(this, poolObjectType);
         }

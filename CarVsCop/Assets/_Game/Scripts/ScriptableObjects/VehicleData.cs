@@ -10,5 +10,17 @@ namespace RacerVsCops
         [SerializeField] private List<VehicleConfig> vehicleConfigs;
 
         internal ReadOnlyCollection<VehicleConfig> VehicleConfigs => vehicleConfigs.AsReadOnly();
+
+        internal VehicleConfig GetVehicleConfig(int vehicleID)
+        {
+            foreach (VehicleConfig vehicleConfig in vehicleConfigs)
+            {
+                if(vehicleConfig.vehicleDatum.ID == vehicleID)
+                {
+                    return vehicleConfig;
+                }
+            }
+            return default;
+        }
     }
 }
