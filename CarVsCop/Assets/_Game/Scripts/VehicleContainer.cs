@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace RacerVsCops
@@ -9,7 +10,7 @@ namespace RacerVsCops
         private EssentialConfigData _essentialConfigData;
         private VehicleData _vehicleData;
 
-        private List<Player> _carList = new List<Player>();
+        private List<Player> _populatedCarList = new List<Player>();
 
         internal void Init(EssentialConfigData essentialConfigData)
         {
@@ -19,28 +20,40 @@ namespace RacerVsCops
 
         internal void AddVehicleToList(Player playerCar)
         {
-            _carList.Add(playerCar);
+            _populatedCarList.Add(playerCar);
         }
 
         internal List<Player> GetVehicleList()
         {
-            return _carList;
+            return _populatedCarList;
         }
-        internal void PopulateVehicles()
-        {
-            if (!Equals(_carList.Count, 0))
-                return;
 
-            else
+        internal List<VehicleConfig> GetAllVehicleConfigs()
+        {
+            return _vehicleData.VehicleConfigs.ToList();    
+        }
+
+        internal void PopulateVehicles(List<VehicleConfig> vehicleConfigsList)
+        {
+            for (int i = 0; i < vehicleConfigsList.Count; i++)
             {
-                for (int i = 0; i < _vehicleData.VehicleConfigs.Count; i++)
+                Player player = Instantiate(vehicleConfigsList[i].vehicleDatum.VehiclePrefab, Vector3.zero, Quaternion.Euler(0, 135, 0)) as Player;
+                player.transform.SetParent(transform);
+                player.Rotator.Init(_essentialConfigData);
+                player.SetVisibility(false);
+                AddVehicleToList(player);
+            }
+        }
+
+        internal void Cleanup()
+        {
+            if (!Equals(_populatedCarList.Count, 0))
+            {
+                foreach (Player player in _populatedCarList)
                 {
-                    Player player = Instantiate(_vehicleData.VehicleConfigs[i].vehicleDatum.VehiclePrefab, Vector3.zero, Quaternion.Euler(0, 135, 0)) as Player;
-                    player.transform.SetParent(transform);
-                    player.Rotator.Init(_essentialConfigData);
-                    player.SetVisibility(false);
-                    AddVehicleToList(player);
+                    player.DestroyPlayer();
                 }
+                _populatedCarList.Clear();
             }
         }
     }

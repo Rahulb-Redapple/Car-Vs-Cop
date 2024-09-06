@@ -18,9 +18,11 @@ namespace RacerVsCops
         private VehicleColorConfig _vehicleColorConfig;
         private ObjectPooling _objectPooling;
 
-        private List<Player> _carList = new List<Player>();
-        private List<Player> _purchasedCarsList = new List<Player>();
+        private List<VehicleConfig> _carListConfigs = new List<VehicleConfig>();
+        private List<VehicleConfig> _purchasedCarsListConfigs = new List<VehicleConfig>();
         private List<ColorItem> _colorItemList = new List<ColorItem>();
+
+        private List<Player> _purchasedCarList = new List<Player>();
 
         private int _selectedCar = 0;
 
@@ -36,10 +38,11 @@ namespace RacerVsCops
             if (isView)
             {
                 _vehicleContainer = (VehicleContainer)data[0];
-                _vehicleContainer.PopulateVehicles();
-                _carList = _vehicleContainer.GetVehicleList();
-
+                _carListConfigs = _vehicleContainer.GetAllVehicleConfigs();
                 FilterOutPurchasedCars();
+                _vehicleContainer.PopulateVehicles(_purchasedCarsListConfigs);
+                _purchasedCarList = _vehicleContainer.GetVehicleList();
+
                 SetItemStatus();
             }
         }
@@ -48,14 +51,14 @@ namespace RacerVsCops
         {
             Debug.Log($"Current in use car :: {PlayerDataHandler.Player.Inventory.GetCurrentInUseCarId()}");
 
-            for (int i = 0; i < _carList.Count; i++)
+            for (int i = 0; i < _purchasedCarList.Count; i++)
             {
-                if (_carList[i].VehicleID == PlayerDataHandler.Player.Inventory.GetCurrentInUseCarId())
+                if (_purchasedCarList[i].VehicleID == PlayerDataHandler.Player.Inventory.GetCurrentInUseCarId())
                 {
-                    _carList[i].SetVisibility(true);
-                    _carList[i].Rotator.ReadyToRotate(true);
+                    _purchasedCarList[i].SetVisibility(true);
+                    _purchasedCarList[i].Rotator.ReadyToRotate(true);
                     _selectedCar = i;
-                    _vehicleCategory = _carList[_selectedCar].VehicleConfig.vehicleDatum.VehicleCategory;
+                    _vehicleCategory = _purchasedCarList[_selectedCar].VehicleConfig.vehicleDatum.VehicleCategory;
                     InitiateColors(_vehicleCategory);
                     HandleEquipButton(_vehicleCategory);
                     //UpdateUi(_carList[_selectedCar].VehicleConfig);
@@ -65,13 +68,13 @@ namespace RacerVsCops
 
         private void FilterOutPurchasedCars()
         {
-            foreach(Player player in _carList)
+            foreach(VehicleConfig player in _carListConfigs)
             {
-                if(PlayerDataHandler.Player.Inventory.PurchasedCarsDict.ContainsKey(player.VehicleID))
+                if(PlayerDataHandler.Player.Inventory.PurchasedCarsDict.ContainsKey(player.vehicleDatum.ID))
                 {
-                    if (!_purchasedCarsList.Contains(player))
+                    if (!_purchasedCarsListConfigs.Contains(player))
                     {
-                        _purchasedCarsList.Add(player);
+                        _purchasedCarsListConfigs.Add(player);
                     }               
                 }
             }
@@ -79,16 +82,16 @@ namespace RacerVsCops
 
         public void Next()
         {
-            _purchasedCarsList[_selectedCar].SetVisibility(false);
-            _purchasedCarsList[_selectedCar].Rotator.Cleanup();
+            _purchasedCarList[_selectedCar].SetVisibility(false);
+            _purchasedCarList[_selectedCar].Rotator.Cleanup();
             _selectedCar++;
 
-            if (_selectedCar == _purchasedCarsList.Count)
+            if (_selectedCar == _purchasedCarsListConfigs.Count)
                 _selectedCar = 0;
 
-            _vehicleCategory = _purchasedCarsList[_selectedCar].VehicleConfig.vehicleDatum.VehicleCategory;
-            _purchasedCarsList[_selectedCar].SetVisibility(true);
-            _purchasedCarsList[_selectedCar].Rotator.ReadyToRotate(true);
+            _vehicleCategory = _purchasedCarList[_selectedCar].VehicleConfig.vehicleDatum.VehicleCategory;
+            _purchasedCarList[_selectedCar].SetVisibility(true);
+            _purchasedCarList[_selectedCar].Rotator.ReadyToRotate(true);
 
             InitiateColors(_vehicleCategory);
             HandleEquipButton(_vehicleCategory);
@@ -97,15 +100,15 @@ namespace RacerVsCops
 
         public void Previous()
         {
-            _purchasedCarsList[_selectedCar].SetVisibility(false);
-            _purchasedCarsList[_selectedCar].Rotator.Cleanup();
+            _purchasedCarList[_selectedCar].SetVisibility(false);
+            _purchasedCarList[_selectedCar].Rotator.Cleanup();
             _selectedCar--;
             if (_selectedCar == -1)
-                _selectedCar = _purchasedCarsList.Count - 1;
+                _selectedCar = _purchasedCarsListConfigs.Count - 1;
 
-            _vehicleCategory = _purchasedCarsList[_selectedCar].VehicleConfig.vehicleDatum.VehicleCategory;
-            _purchasedCarsList[_selectedCar].SetVisibility(true);
-            _purchasedCarsList[_selectedCar].Rotator.ReadyToRotate(true);
+            _vehicleCategory = _purchasedCarList[_selectedCar].VehicleConfig.vehicleDatum.VehicleCategory;
+            _purchasedCarList[_selectedCar].SetVisibility(true);
+            _purchasedCarList[_selectedCar].Rotator.ReadyToRotate(true);
 
             InitiateColors(_vehicleCategory);
             HandleEquipButton(_vehicleCategory);
@@ -133,22 +136,22 @@ namespace RacerVsCops
 
         private void SetMaterialToVehicle(Material material)
         {
-            _purchasedCarsList[_selectedCar].MaterialHandler.SetMaterial(material);
+            _purchasedCarList[_selectedCar].MaterialHandler.SetMaterial(material);
         }
 
         private void HandleEquipButton(VehicleCategory vehicleCategory)
         {
             _equipButton.interactable = (int)vehicleCategory == PlayerDataHandler.Player.Inventory.GetCurrentInUseCarId() ? false : true;
-            GameConstants.CurrentVehicleConfig = _purchasedCarsList[_selectedCar].VehicleConfig;
+            GameConstants.CurrentVehicleConfig = _purchasedCarList[_selectedCar].VehicleConfig;
         }
 
         public void OnEquip()
         {
-            PlayerDataHandler.Player.Inventory.SetCurrentInUseCar(_purchasedCarsList[_selectedCar].VehicleID);
+            PlayerDataHandler.Player.Inventory.SetCurrentInUseCar(_purchasedCarList[_selectedCar].VehicleID);
             HandleEquipButton((VehicleCategory)PlayerDataHandler.Player.Inventory.GetCurrentInUseCarId());
             Debug.Log($"Equipped vehiche ID :: " +
                 $"{PlayerDataHandler.Player.Inventory.GetCurrentInUseCarId()} Name :: " +
-                $"{_purchasedCarsList[_selectedCar].VehicleConfig.vehicleDatum.VehicleName}");
+                $"{_purchasedCarList[_selectedCar].VehicleConfig.vehicleDatum.VehicleName}");
         }
 
         public void HideGarage()
@@ -171,9 +174,9 @@ namespace RacerVsCops
 
         internal override void Cleanup()
         {
-            if (!Equals(_purchasedCarsList.Count, 0))
+            if (!Equals(_purchasedCarList.Count, 0))
             {
-                _purchasedCarsList.ForEach(x =>
+                _purchasedCarList.ForEach(x =>
                 {
                     x.Rotator.Cleanup();
                     x.SetVisibility(false);
@@ -181,6 +184,7 @@ namespace RacerVsCops
             }
 
             ClearColorList();
+            _vehicleContainer.Cleanup();
         }
     }
 }

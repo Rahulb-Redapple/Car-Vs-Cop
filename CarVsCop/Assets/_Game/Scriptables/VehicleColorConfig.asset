@@ -52,7 +52,7 @@ MonoBehaviour:
     - _material: {fileID: 2100000, guid: 98ca22e1cc5ca13489f0eebb1733ee5e, type: 2}
       _color: {r: 0.9686275, g: 0.854902, b: 0.42352945, a: 1}
       _materialCode: taxi_muscle_01
-      _price: 100
+      _price: 0
   - _vehicleCategory: 105
     _materialsList:
     - _material: {fileID: 2100000, guid: 90be8a7f3b30fc44e9a5003ed7dba622, type: 2}

@@ -29,9 +29,7 @@ namespace RacerVsCops
         [SerializeField] private Transform _itemDisplayRawImage;
         [SerializeField] private BuyVehicleButton _buyVehicleButton;
 
-        private VehicleData _vehicleData;
         private VehicleContainer _vehicleContainer;
-        private VehicleColorConfig _vehicleColorConfig;
 
         private List<Player> _carList = new List<Player>();
 
@@ -40,8 +38,6 @@ namespace RacerVsCops
         internal override void Init(PopupHandler popupHandler, EssentialConfigData essentialConfigData, EssentialHelperData essentialHelperData)
         {
             base.Init(popupHandler, essentialConfigData, essentialHelperData);
-            _vehicleData = _essentialConfigData.AccessConfig<VehicleData>();
-            _vehicleColorConfig = _essentialConfigData.AccessConfig<VehicleColorConfig>();
             _buyVehicleButton.Init(_essentialConfigData, _popupHandler);
         }
 
@@ -52,7 +48,7 @@ namespace RacerVsCops
                 _vehicleContainer = (VehicleContainer)data[0];  
 
                 GameHelper.Instance.StartListening(GameConstants.OnSelectItem, HandleCurrentSelectedItem);
-                _vehicleContainer.PopulateVehicles();
+                _vehicleContainer.PopulateVehicles(_vehicleContainer.GetAllVehicleConfigs());
                 PopulateVehicles();
                 SetItemStatus();
 
@@ -84,12 +80,6 @@ namespace RacerVsCops
                     UpdateUi(_carList[_selectedCar].VehicleConfig);
                 }
             }
-        }
-
-        internal void HideShop()
-        {
-            _popupHandler.HidePopup();
-            Cleanup();
         }
 
         private void HandleCurrentSelectedItem(object obj)
@@ -143,6 +133,12 @@ namespace RacerVsCops
             _buyVehicleButton.EvaluateVehiclePurchase(vehicleConfig.vehicleDatum.ID);
         }
 
+        internal void HideShop()
+        {
+            _popupHandler.HidePopup();
+            Cleanup();
+        }
+
         public void CloseShop()
         {
             HideShop();
@@ -158,6 +154,7 @@ namespace RacerVsCops
                     x.SetVisibility(false);
                 });
             }
+            _vehicleContainer.Cleanup();
         }
     }
 }

@@ -73,6 +73,11 @@ namespace RacerVsCops
         {
             _vehicleInvincibility.Cleanup();
             _vehicleAudioHelper.Cleanup();
+            DestroyPlayer();
+        }
+
+        internal void DestroyPlayer()
+        {
             Destroy(gameObject);
         }
     }
