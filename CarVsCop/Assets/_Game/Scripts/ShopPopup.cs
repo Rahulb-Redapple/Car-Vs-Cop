@@ -35,6 +35,8 @@ namespace RacerVsCops
 
         private int _selectedCar = 0;
 
+        public bool giveTempCash = false;
+
         internal override void Init(PopupHandler popupHandler, EssentialConfigData essentialConfigData, EssentialHelperData essentialHelperData)
         {
             base.Init(popupHandler, essentialConfigData, essentialHelperData);
@@ -52,7 +54,7 @@ namespace RacerVsCops
                 PopulateVehicles();
                 SetItemStatus();
 
-                //PlayerDataHandler.Player.GameCurrency.UpdateCash(CashType.PLAYING, 10000);
+               if(giveTempCash) PlayerDataHandler.Player.GameCurrency.UpdateCash(CashType.PLAYING, 10000);
                 Debug.Log($"Balance :: {PlayerDataHandler.Player.GameCurrency.GetTotalCash()}");
             }
         }

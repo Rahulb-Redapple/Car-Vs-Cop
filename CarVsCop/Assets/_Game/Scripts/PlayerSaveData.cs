@@ -122,7 +122,7 @@ namespace RacerVsCops
     public sealed class Inventory
     {
         [JsonProperty(PropertyName = "purchasedCarsDict")]
-        private Dictionary<int, VehicleAdditionalData> _purchasedCarsDict = new Dictionary<int, VehicleAdditionalData>();
+        private Dictionary<int, List<string>> _purchasedCarsDict = new Dictionary<int, List<string>>();
 
         [JsonProperty(PropertyName = "currentInUseCarId")]
         private int _currentInUseCarId = 101;
@@ -130,67 +130,67 @@ namespace RacerVsCops
         [JsonProperty(PropertyName = "currentInUseCarColor")]
         private string _carColor;
 
-        [JsonIgnore] public Dictionary<int, VehicleAdditionalData> PurchasedCarsDict => _purchasedCarsDict;
+        [JsonIgnore] public Dictionary<int, List<string>> PurchasedCarsDict => _purchasedCarsDict;
 
         public void AddDefaultCar(string materialCode)
         {
-            //if (_purchasedCarsDict.ContainsKey(_currentInUseCarId))
-            //{
-            //    List<string> materialCodeList = _purchasedCarsDict[_currentInUseCarId];
-            //    if (!materialCodeList.Contains(materialCode))
-            //    {
-            //        materialCodeList.Add(materialCode);
-            //    }
-            //}
-            //else
-            //{
-            //    List<string> materialCodeList = new List<string>();
-            //    materialCodeList.Add(materialCode);
-            //    _purchasedCarsDict.Add(_currentInUseCarId, materialCodeList);
-            //}
+            if (_purchasedCarsDict.ContainsKey(_currentInUseCarId))
+            {
+                List<string> materialCodeList = _purchasedCarsDict[_currentInUseCarId];
+                if (!materialCodeList.Contains(materialCode))
+                {
+                    materialCodeList.Add(materialCode);
+                }
+            }
+            else
+            {
+                List<string> materialCodeList = new List<string>();
+                materialCodeList.Add(materialCode);
+                _purchasedCarsDict.Add(_currentInUseCarId, materialCodeList);
+            }
 
             // ====================================================================== //
 
-            if (!_purchasedCarsDict.ContainsKey(_currentInUseCarId))
-            {
-                _purchasedCarsDict.Add(_currentInUseCarId, new VehicleAdditionalData(materialCode));
-            }
+            //if (!_purchasedCarsDict.ContainsKey(_currentInUseCarId))
+            //{
+            //    _purchasedCarsDict.Add(_currentInUseCarId, new VehicleAdditionalData(materialCode));
+            //}
         }
 
         public void AddNewPurchasedCar(int purchasedCarId, string materialCode)
         {
-            //if (!_purchasedCarsDict.ContainsKey(purchasedCarId))
-            //{
-            //    List<string> materialCodeList = new List<string>();
-            //    materialCodeList.Add(materialCode);
-            //    _purchasedCarsDict.Add(purchasedCarId, materialCodeList);
-            //}
-            //
+            if (!_purchasedCarsDict.ContainsKey(purchasedCarId))
+            {
+                List<string> materialCodeList = new List<string>();
+                materialCodeList.Add(materialCode);
+                _purchasedCarsDict.Add(purchasedCarId, materialCodeList);
+            }
+
             // ========================================================================== //
 
-            if(!_purchasedCarsDict.ContainsKey(purchasedCarId))
-            {
-                _purchasedCarsDict.Add(purchasedCarId, new VehicleAdditionalData(materialCode));
-            }
+            //if (!_purchasedCarsDict.ContainsKey(purchasedCarId))
+            //{
+            //    _purchasedCarsDict.Add(purchasedCarId, new VehicleAdditionalData(materialCode));
+            //}
         }
 
         public void AddNewVehicleMaterial(int purchasedCarId, string materialCode)
         {
-            //if (_purchasedCarsDict.ContainsKey(purchasedCarId))
-            //{
-            //    List<string> materialCodeList = _purchasedCarsDict[_currentInUseCarId];
-            //    if (!materialCodeList.Contains(materialCode))
-            //    {
-            //        materialCodeList.Add(materialCode);
-            //    }
-            //}
+            if (_purchasedCarsDict.ContainsKey(purchasedCarId))
+            {
+                List<string> materialCodeList = _purchasedCarsDict[_currentInUseCarId];
+                if (!materialCodeList.Contains(materialCode))
+                {
+                    materialCodeList.Add(materialCode);
+                }
+            }
 
             // ============================================================================ //
 
-            if(_purchasedCarsDict.ContainsKey(purchasedCarId))
-            {
-                _purchasedCarsDict[purchasedCarId] = new VehicleAdditionalData(materialCode);
-            }
+            //if (_purchasedCarsDict.ContainsKey(purchasedCarId))
+            //{
+            //    _purchasedCarsDict[purchasedCarId] = new VehicleAdditionalData(materialCode);
+            //}
         }
 
         public void SetCurrentInUseCar(int currentInUseCarId)
@@ -204,22 +204,22 @@ namespace RacerVsCops
         }
     }
 
-    [Serializable]
-    public sealed class VehicleAdditionalData
-    {
-        [JsonProperty(PropertyName = "vehicleMaterialCode")]
-        private List<string> _vehicleMaterialCode = new List<string>();
+    //[Serializable]
+    //public sealed class VehicleAdditionalData
+    //{
+    //    [JsonProperty(PropertyName = "vehicleMaterialCode")]
+    //    private List<string> _vehicleMaterialCode = new List<string>();
 
-        [JsonIgnore]
-        public List<string> VehicleMaterialCode => _vehicleMaterialCode;
+    //    [JsonIgnore]
+    //    public List<string> VehicleMaterialCode => _vehicleMaterialCode;
 
-        private VehicleAdditionalData() { }
+    //    private VehicleAdditionalData() { }
 
-        public VehicleAdditionalData(string vehicleMaterialCode)
-        {
-            if (!_vehicleMaterialCode.Contains(vehicleMaterialCode))
-                _vehicleMaterialCode.Add(vehicleMaterialCode);
-        }
-    }
+    //    public VehicleAdditionalData(string vehicleMaterialCode)
+    //    {
+    //        if (!_vehicleMaterialCode.Contains(vehicleMaterialCode))
+    //            _vehicleMaterialCode.Add(vehicleMaterialCode);
+    //    }
+    //}
 
 }
