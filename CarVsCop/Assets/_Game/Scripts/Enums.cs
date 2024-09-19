@@ -102,4 +102,11 @@ namespace RacerVsCops
         SEDAN = 108,
         PICKUP = 109
     }
+
+    public enum TweenType
+    {
+        NONE = 0,
+        MOVE,
+        SCALE
+    }
 }
